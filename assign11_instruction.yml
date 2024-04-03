@@ -1,0 +1,30 @@
+NOTE:
+- Make sure hadoop and java is installed
+- Start hadoop on "localhost:9870"
+- For refernce: https://youtu.be/6sK3LDY7Pp4
+
+
+Step1: Make folder "Assignment11" in Home
+
+
+Step2: In "Assignment11": 
+   - Make "input_data" folder
+   - Inside "input_data" make "input.txt"
+   - Make "test" folder
+   - Make "WordCount.java"
+   
+
+Step3: On terminal (As a User) :
+   - hadoop version
+   - javac --vesrion
+   - export HADOOP_CLASSPATH=$(hadoop classpath)
+   - echo $HADOOP_CLASSPATH
+   - hadoop fs -mkdir /WordCount
+   - hadoop fs -mkdir /WordCount/Input
+   - hadoop fs -put '/home/te/Assignment11/input_data/input.txt' /WordCount/Input
+   - cd /home/te/Assignment11
+   
+   In Assignment11: javac -classpath ${HADOOP_CLASSPATH} -d '/home/te/Assignment11/test' '/home/te/Assignment11/WordCount.java' 
+   In Assignment11: jar -cvf wordcount.jar -C test/ .
+   In Assignment11: hadoop jar '/home/te/Assignment11/wordcount.jar' WordCount /WordCount/Input /WordCount/Output
+   In Assignment11: hadoop dfs -cat /WordCount/Output/*
